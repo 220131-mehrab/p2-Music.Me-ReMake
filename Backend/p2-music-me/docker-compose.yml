@@ -1,0 +1,23 @@
+services:
+  p2-db:
+    container_name: p2-db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "JA@known0926"
+    volumes:
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - 5432:5432
+  p2-app:
+    image: p2-musicme
+    container_name: p2-musicme
+    depends_on:
+      - p2-db
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
