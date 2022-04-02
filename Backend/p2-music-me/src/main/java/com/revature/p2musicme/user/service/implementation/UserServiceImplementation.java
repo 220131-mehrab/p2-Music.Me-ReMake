@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 @RequiredArgsConstructor
-@Service
+@Service("userServiceImpl")
 @Transactional
 @Slf4j
 public class UserServiceImplementation implements UserService {

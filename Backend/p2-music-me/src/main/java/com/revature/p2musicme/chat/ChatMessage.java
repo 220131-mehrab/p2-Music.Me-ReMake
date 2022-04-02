@@ -4,15 +4,16 @@ import com.revature.p2musicme.chat.enumeration.MessageType;
 
 import javax.persistence.*;
 
-@Entity(name = "chat")
+@Entity
+@Table(name = "messanger")
 public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "content")
     private String content;
-    @Column(name = "sender", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private String sender;
-    @Column(name = "message_type")
+
     private MessageType type;
 
     public String getContent() {
